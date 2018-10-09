@@ -1,0 +1,9 @@
+.Image {
+    background-repeat: no-repeat;
+    background-attachment: center;
+    background-size: cover;
+    /* background-position-x: 5;0%; */
+    height: 100%;
+    width: 100%;
+}
+

@@ -1,0 +1,11 @@
+
+.SerieTile {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.SerieTile-ImageContainer {
+    height: 100px;
+    width: 250px;
+}
