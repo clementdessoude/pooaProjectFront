@@ -9,7 +9,7 @@ class App extends React.Component {
       <div className="App">
         POOA Series FR
         Best POOA Project of the Year !!!!
-        Please like, you can find us at Saclay.
+        Please like, you can find us in Saclay.
         <div className="App-PageContainer">
           <SeriesPage/>
         </div>

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const fetchSeries = async () => {
 
-    const url = 'http://projetgesteco.fr:8000/missions/?format=json';
+    const url = 'http://localhost:8080/api/serie/all';
     // tslint:disable:no-console
     const rep = await axios.get(url);
     console.log('api', rep);

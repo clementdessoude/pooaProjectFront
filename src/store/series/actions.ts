@@ -14,11 +14,11 @@ export interface IFetchSeriesSuccessPayload {
 }
 
 
-export const MISSION_ACTIONS = {
+export const SERIES_ACTIONS = {
     fecthSeriesFailure: () => createAction(ActionTypes.FETCH_SERIES_FAILURE),
     fecthSeriesSuccess: (payload: IFetchSeriesSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_SUCCESS, payload),
     fetchSeriesRequest: () => createAction(ActionTypes.FETCH_SERIES_REQUEST),
 }
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;
-export type Actions = ActionsUnion<typeof MISSION_ACTIONS>;
+export type Actions = ActionsUnion<typeof SERIES_ACTIONS>;

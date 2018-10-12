@@ -1,1 +1,1 @@
-export * from './SeriesPage/SeriesPage';
+export { default as SeriesPage } from './SeriesPage/SeriesPageContainer';

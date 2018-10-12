@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 // import { ISerie } from '../../interfaces';
-import { ActionTypes, MISSION_ACTIONS } from './actions';
+import { ActionTypes, SERIES_ACTIONS } from './actions';
 import { Api } from './api';
 
 export function* fetchSeries(): Iterator<any> {
@@ -21,9 +21,9 @@ export function* fetchSeries(): Iterator<any> {
         //         // [{value: 10, icon: 'star'},{value: 8, icon: 'map'}],
         //         imgSrc: "https://res.cloudinary.com/gesteco/image/upload/v1535568316/samples/landscapes/nature-mountains.jpg"})
         // );
-        yield put(MISSION_ACTIONS.fecthSeriesSuccess({series: data}));
+        yield put(SERIES_ACTIONS.fecthSeriesSuccess({series: data}));
     } catch (error) {
-        yield put(MISSION_ACTIONS.fecthSeriesFailure());
+        yield put(SERIES_ACTIONS.fecthSeriesFailure());
     }
 }
 

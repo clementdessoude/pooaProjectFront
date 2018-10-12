@@ -9,7 +9,7 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_SERIES_REQUEST:
             return {...state, };
         case ActionTypes.FETCH_SERIES_SUCCESS:
-            return {...state, };
+            return {...state, series: action.payload ? action.payload.series : []};
         case ActionTypes.FETCH_SERIES_FAILURE:
             return {...state, };
 
