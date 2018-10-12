@@ -1,21 +1,42 @@
 import * as React from 'react';
 import './App.css';
 
-import { SeriesPage } from './pages';
+import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 
-class App extends React.Component {
+import { NavBar } from './components';
+import { LoginPage, SeriesPage } from './pages';
+
+interface IAppProps extends RouteComponentProps<{}> {
+  
+}
+
+class App extends React.Component<IAppProps> {
+
+  private NAV_ITEMS = [
+    {title: "home", handler: () => this.props.history.push('/home')},
+    {title: "Log in", handler: () => this.props.history.push('/login')},
+  ]
+
   public render() {
     return (
       <div className="App">
-        POOA Series FR
-        Best POOA Project of the Year !!!!
-        Please like, you can find us in Saclay.
         <div className="App-PageContainer">
-          <SeriesPage/>
+          <div className="NavContainer">
+            <NavBar navItems={this.NAV_ITEMS}/>
+          </div>
+          <div className="App-PageContent">
+            <div className="App-Content">
+              <Switch>
+                <Route path='/home' component={SeriesPage} />
+                <Route path='/login' component={LoginPage} />
+                <Route path='/' component={SeriesPage} /> 
+              </Switch>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

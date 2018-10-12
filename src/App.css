@@ -5,9 +5,25 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: flex;
 }
 
 .App-PageContainer {
   height: 100%;
   width: 100%;
+  display: flex;
+}
+
+.App-PageContent {
+  contain: size;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.NavContainer {
+  contain: size layout;
+  min-width: 130px;
+  background-color: #839dc6;
+  /* color: white; */
 }
