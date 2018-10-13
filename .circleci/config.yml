@@ -55,11 +55,11 @@ jobs:
       - run:
           name: Delete old files
           command: |
-            ssh $SSH_USER@$SSH_HOST "rm -rf ~/front/build"
+            ssh $SSH_USER@$SSH_HOST "rm -rf ~/front/build && mkdir ~/front/build"
       - run:
           name: Deploy Over SSH
           command: |
-            scp -r ~/front/build $SSH_USER@$SSH_HOST:~/front
+            scp -r ~/front/build $SSH_USER@$SSH_HOST:~/front/build
 
 workflows:
   version: 2
