@@ -53,6 +53,10 @@ jobs:
       - attach_workspace:
           at: ~/front
       - run:
+          name: Delete old files
+          command: |
+            ssh $SSH_USER@$SSH_HOST "rm -rf ~/front/build"
+      - run:
           name: Deploy Over SSH
           command: |
             scp -r ~/front/build $SSH_USER@$SSH_HOST:~/front
