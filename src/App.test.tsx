@@ -4,8 +4,8 @@ import App from './App';
 
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import { history } from './store/router';
 import { store } from './store';
+import { history } from './store/router';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
