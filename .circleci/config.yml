@@ -59,7 +59,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            scp -r ~/front/build $SSH_USER@$SSH_HOST:~/front/build
+            scp -r ~/front/build $SSH_USER@$SSH_HOST:~/front
 
 workflows:
   version: 2
