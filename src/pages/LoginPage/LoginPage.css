@@ -13,3 +13,7 @@
 .LoginPage-TextField {
     width: 200px !important;
 }
+
+.LoginPage-Button{
+    margin-top: 2rem !important;
+}

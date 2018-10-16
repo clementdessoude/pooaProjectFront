@@ -2,6 +2,7 @@
 import * as React from 'react';
 import './RegisterPage.css';
 
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 interface ILoginState {
@@ -25,6 +26,10 @@ export class RegisterPage extends React.Component<{},ILoginState> {
     this.setState({password});
   }
 
+  public handleRegister() {
+    return null;
+  }
+
   public render() {
     return (
       <div className="RegisterPage">
@@ -44,6 +49,9 @@ export class RegisterPage extends React.Component<{},ILoginState> {
                     className="RegisterPage-TextField"
                     type="password"
                     onChange={(ev) => this.handlePasswordChange(ev.target.value)}/>
+                <Button variant="contained" color="primary" className="RegisterPage-Button" onClick={() => this.handleRegister()}>
+                    Log In
+                </Button>
             </form>
         </div>
       </div>

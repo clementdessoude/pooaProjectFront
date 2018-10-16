@@ -13,3 +13,7 @@
 .RegisterPage-TextField {
     width: 200px !important;
 }
+
+.RegisterPage-Button{
+    margin-top: 2rem !important;
+}
