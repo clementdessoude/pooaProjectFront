@@ -4,7 +4,7 @@ import './App.css';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 
 import { NavBar } from './components';
-import { LoginPage, SeriesPage } from './pages';
+import { LoginPage, RegisterPage, SeriesPage } from './pages';
 
 interface IAppProps extends RouteComponentProps<{}> {
   
@@ -13,8 +13,9 @@ interface IAppProps extends RouteComponentProps<{}> {
 class App extends React.Component<IAppProps> {
 
   private NAV_ITEMS = [
-    {title: "home", handler: () => this.props.history.push('/home')},
+    {title: "home", handler: () => this.props.history.push('/Home')},
     {title: "Log in", handler: () => this.props.history.push('/login')},
+    {title: "Register", handler: () => this.props.history.push('/register')},
   ]
 
   public render() {
@@ -29,6 +30,7 @@ class App extends React.Component<IAppProps> {
               <Switch>
                 <Route path='/home' component={SeriesPage} />
                 <Route path='/login' component={LoginPage} />
+                <Route path='/register' component={RegisterPage} />
                 <Route path='/' component={SeriesPage} /> 
               </Switch>
             </div>

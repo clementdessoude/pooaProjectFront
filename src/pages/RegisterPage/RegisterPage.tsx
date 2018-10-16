@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import './LoginPage.css';
+import './RegisterPage.css';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -9,7 +9,7 @@ interface ILoginState {
     password: string;
 }
 
-export class LoginPage extends React.Component<{},ILoginState> {
+export class RegisterPage extends React.Component<{},ILoginState> {
 
   public componentWillMount(){
       const login = "";
@@ -27,21 +27,21 @@ export class LoginPage extends React.Component<{},ILoginState> {
 
   public render() {
     return (
-      <div className="LoginPage">
-        Log In
+      <div className="RegisterPage">
+        Register
         <div>
-            <form className="LoginPage-Form" autoComplete="off">
+            <form className="RegisterPage-Form" autoComplete="off">
                 <TextField 
                     id="login"
                     label="Login"
                     value={this.state.login}
-                    className="LoginPage-TextField"
+                    className="RegisterPage-TextField"
                     onChange={(ev) => this.handleLoginChange(ev.target.value)}/>
                 <TextField 
                     id="password"
                     label="Password"
                     value={this.state.password}
-                    className="LoginPage-TextField"
+                    className="RegisterPage-TextField"
                     type="password"
                     onChange={(ev) => this.handlePasswordChange(ev.target.value)}/>
             </form>
