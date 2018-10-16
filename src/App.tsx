@@ -4,7 +4,7 @@ import './App.css';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 
 import { NavBar } from './components';
-import { LoginPage, RegisterPage, SeriesPage } from './pages';
+import { LoginPage, RegisterPage, SerieDetailsPage, SeriesPage } from './pages';
 
 interface IAppProps extends RouteComponentProps<{}> {
   
@@ -31,6 +31,7 @@ class App extends React.Component<IAppProps> {
                 <Route path='/home' component={SeriesPage} />
                 <Route path='/login' component={LoginPage} />
                 <Route path='/register' component={RegisterPage} />
+                <Route path='/serie-details' component={SerieDetailsPage} />
                 <Route path='/' component={SeriesPage} /> 
               </Switch>
             </div>

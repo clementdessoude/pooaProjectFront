@@ -12,6 +12,7 @@ export function* fetchSeries(): Iterator<any> {
         let data = rep.data;
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
+            description: item.description as string,
             id: item.id,
             imgSrc: BASE_IMG_URL + item.image as string,
             title: item.name as string,

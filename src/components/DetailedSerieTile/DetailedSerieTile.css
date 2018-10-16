@@ -1,0 +1,25 @@
+
+.DetailedSerieTileContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+
+.DetailedSerieTile-ImageContainer {
+    height: 500px;
+    /* width: 300px; */
+    min-width: 350px;
+}
+
+.DetailedSerieTile-Description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.DetailedSerieTile-Title {
+    padding-bottom: 1.5rem;
+}

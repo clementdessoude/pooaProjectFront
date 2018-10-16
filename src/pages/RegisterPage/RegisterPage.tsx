@@ -49,8 +49,17 @@ export class RegisterPage extends React.Component<{},ILoginState> {
                     className="RegisterPage-TextField"
                     type="password"
                     onChange={(ev) => this.handlePasswordChange(ev.target.value)}/>
+                <TextField
+                    id="date"
+                    label="Birthday"
+                    type="date"
+                    className="RegisterPage-TextField"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
                 <Button variant="contained" color="primary" className="RegisterPage-Button" onClick={() => this.handleRegister()}>
-                    Log In
+                    Register
                 </Button>
             </form>
         </div>

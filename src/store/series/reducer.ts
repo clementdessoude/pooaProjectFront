@@ -13,6 +13,10 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_SERIES_FAILURE:
             return {...state, };
 
+        // SERIE Details
+        case ActionTypes.SERIE_DETAILS_REQUEST:
+            return {...state, serieDetails: action.payload ? action.payload.serie : undefined };
+
         default:
             return state;
     }
