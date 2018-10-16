@@ -16,6 +16,7 @@ class App extends React.Component<IAppProps> {
     {title: "home", handler: () => this.props.history.push('/Home')},
     {title: "Log in", handler: () => this.props.history.push('/login')},
     {title: "Register", handler: () => this.props.history.push('/register')},
+    {title: "My List", handler: () => true},
   ]
 
   public render() {

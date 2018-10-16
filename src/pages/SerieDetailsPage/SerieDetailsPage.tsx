@@ -16,7 +16,6 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
     return (
       <div className="SerieDetailsPage">
         <div className="SerieDetailsPage-Tiles">
-           Serie Details
            <DetailedSerieTile 
               title={this.props.serie.title} 
               imgSrc={this.props.serie.imgSrc} 

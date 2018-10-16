@@ -8,7 +8,7 @@ export enum ActionTypes {
     FETCH_SERIES_SUCCESS = 'FETCH_SERIES_SUCCESS',
     FETCH_SERIES_FAILURE = 'FETCH_SERIES_FAILURE',
 
-    SERIE_DETAILS_REQUEST = 'SERIE_DETAILS_REQUEST',
+    SET_CURRENT_SERIE = 'SET_CURRENT_SERIE',
 
 }
 
@@ -25,7 +25,7 @@ export const SERIES_ACTIONS = {
     fecthSeriesSuccess: (payload: IFetchSeriesSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_SUCCESS, payload),
     fetchSeriesRequest: () => createAction(ActionTypes.FETCH_SERIES_REQUEST),
 
-    serieDetailsRequest: (payload: ISeriedetailsRequestPayload) => createAction(ActionTypes.SERIE_DETAILS_REQUEST, payload),
+    serieDetailsRequest: (payload: ISeriedetailsRequestPayload) => createAction(ActionTypes.SET_CURRENT_SERIE, payload),
 }
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;

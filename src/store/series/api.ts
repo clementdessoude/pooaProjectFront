@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { BASE_API_URL } from '../../const/api.const';
 
 const fetchSeries = async () => {
 
-    // const url = 'http://localhost:8080/api/serie/all';
-    const url = 'http://pooaseries.fr:8080/api/serie/all';
+    const url = BASE_API_URL + '/serie/all';
     // tslint:disable:no-console
     const rep = await axios.get(url);
     console.log('api', rep);

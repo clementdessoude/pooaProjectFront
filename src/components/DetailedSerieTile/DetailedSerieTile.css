@@ -20,6 +20,6 @@
     padding: 1rem;
 }
 
-.DetailedSerieTile-Title {
+.DetailedSerieTile-Title, DetailedSerieTile-Description {
     padding-bottom: 1.5rem;
 }

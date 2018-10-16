@@ -14,7 +14,7 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
             return {...state, };
 
         // SERIE Details
-        case ActionTypes.SERIE_DETAILS_REQUEST:
+        case ActionTypes.SET_CURRENT_SERIE:
             return {...state, serieDetails: action.payload ? action.payload.serie : undefined };
 
         default:

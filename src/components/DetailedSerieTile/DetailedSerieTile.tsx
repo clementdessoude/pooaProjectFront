@@ -1,6 +1,9 @@
 import * as React from 'react';
 import './DetailedSerieTile.css';
 
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+
 import { Image } from '../Image/Image';
 
 interface IDetailedSerieTileProps {
@@ -19,7 +22,10 @@ export class DetailedSerieTile extends React.Component<IDetailedSerieTileProps> 
             </div>
             <div className="DetailedSerieTile-Description">
                 <span className="DetailedSerieTile-Title"> {this.props.title} </span>
-                <span>{this.props.description}</span>
+                <span className="DetailedSerieTile-Description">{this.props.description}</span>
+                <Button variant="fab" color="primary" aria-label="Add" className="DetailedSerieTile-Add">
+                    <AddIcon />
+                </Button>
             </div>
         </div>
       </div>
