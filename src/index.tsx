@@ -9,13 +9,17 @@ import { history } from './store/router';
 
 import { Provider } from 'react-redux';
 
-import { store } from './store';
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { persistor, store } from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-        <App />
-    </ConnectedRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>
+          <App />
+      </ConnectedRouter>
+    </PersistGate >
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

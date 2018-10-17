@@ -4,7 +4,8 @@ import { ISerie } from '../../interfaces';
 import { ActionTypes, SERIES_ACTIONS } from './actions';
 import { Api } from './api';
 
-const BASE_IMG_URL = "http://image.tmdb.org/t/p/original/";
+import { BASE_IMG_URL } from '../../const/api.const';
+
 
 export function* fetchSeries(): Iterator<any> {
     try {
