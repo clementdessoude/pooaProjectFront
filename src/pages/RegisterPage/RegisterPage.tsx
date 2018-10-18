@@ -8,9 +8,14 @@ import TextField from '@material-ui/core/TextField';
 interface ILoginState {
     login: string;
     password: string;
+    birthdate: string;
 }
 
-export class RegisterPage extends React.Component<{},ILoginState> {
+interface IRegisterProps {
+  registerRequest: (login: string, password: string, birthdate: string) => void;
+}
+
+export class RegisterPage extends React.Component<IRegisterProps,ILoginState> {
 
   public componentWillMount(){
       const login = "";
@@ -27,7 +32,11 @@ export class RegisterPage extends React.Component<{},ILoginState> {
   }
 
   public handleRegister() {
-    return null;
+    this.props.registerRequest(
+      this.state.login,
+      this.state.password,
+      this.state.birthdate   
+    );
   }
 
   public render() {
