@@ -1,30 +1,23 @@
 import * as React from 'react';
 import './App.css';
 
-import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { NavBar } from './components';
 import { LoginPage, RegisterPage, SerieDetailsPage, SeriesPage } from './pages';
 
-interface IAppProps extends RouteComponentProps<{}> {
-  
-}
+// interface IAppProps extends RouteComponentProps<{}> {
+//   // isLoginVisible: boolean;
+// }
 
-class App extends React.Component<IAppProps> {
-
-  private NAV_ITEMS = [
-    {title: "home", handler: () => this.props.history.push('/Home')},
-    {title: "Log in", handler: () => this.props.history.push('/login')},
-    {title: "Register", handler: () => this.props.history.push('/register')},
-    {title: "My List", handler: () => true},
-  ]
+class App extends React.Component<{}> {
 
   public render() {
     return (
       <div className="App">
         <div className="App-PageContainer">
           <div className="NavContainer">
-            <NavBar navItems={this.NAV_ITEMS}/>
+            <NavBar />
           </div>
           <div className="App-PageContent">
             <div className="App-Content">
@@ -43,4 +36,4 @@ class App extends React.Component<IAppProps> {
   }
 }
 
-export default withRouter(App);
+export default App;

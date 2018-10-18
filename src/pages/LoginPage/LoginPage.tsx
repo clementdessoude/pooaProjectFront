@@ -10,7 +10,11 @@ interface ILoginState {
     password: string;
 }
 
-export class LoginPage extends React.Component<{},ILoginState> {
+interface ILoginProps {
+  loginRequest: (login: string, password: string) => void;
+}
+
+export class LoginPage extends React.Component<ILoginProps,ILoginState> {
 
   public componentWillMount(){
       const login = "";
@@ -27,7 +31,7 @@ export class LoginPage extends React.Component<{},ILoginState> {
   }
 
   public handleLogin() {
-    return null;
+    this.props.loginRequest(this.state.login, this.state.password);
   }
 
   public render() {

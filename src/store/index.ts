@@ -9,6 +9,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { serieReducer, seriesSaga } from '../store/series';
+import { userReducer, userSaga } from '../store/user';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +20,8 @@ const persistConfig = {
 
 const rootReducer = connectRouter(history)(
     combineReducers({
-        serieReducer
+        serieReducer,
+        userReducer
     }));
 
 const pReducer = persistReducer(persistConfig, rootReducer);
@@ -35,3 +37,4 @@ export const store = createStore(
 export const persistor = persistStore(store);
 
 sagaMiddleware.run(seriesSaga);
+sagaMiddleware.run(userSaga);

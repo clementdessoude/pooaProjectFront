@@ -1,5 +1,7 @@
 import { ISeriesState } from './series-state';
+import { IUserState } from './user-state';
 
 export interface IStore {
-    serieReducer: ISeriesState
+    serieReducer: ISeriesState,
+    userReducer: IUserState
 }

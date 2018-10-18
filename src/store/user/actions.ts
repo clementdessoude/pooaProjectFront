@@ -1,4 +1,5 @@
 import { ActionCreatorsMapObject } from 'redux';
+import { IUser } from '../../interfaces';
 import { createAction } from '../util';
 
 // Actions type 
@@ -14,13 +15,11 @@ export interface ILoginRequestPayload {
 }
 
 export interface ILoginSuccessPayload {
-    login: string;
-    password: string;
-    id: number;
+    user: IUser;
 }
 
 
-export const SERIES_ACTIONS = {
+export const USER_ACTIONS = {
     loginFailure: () => createAction(ActionTypes.LOGIN_FAILURE),
     loginRequest: (payload: ILoginRequestPayload ) => createAction(ActionTypes.LOGIN_REQUEST, payload),
     loginSuccess: (payload: ILoginSuccessPayload) => createAction(ActionTypes.LOGIN_SUCCESS, payload),
@@ -28,4 +27,4 @@ export const SERIES_ACTIONS = {
 }
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;
-export type Actions = ActionsUnion<typeof SERIES_ACTIONS>;
+export type Actions = ActionsUnion<typeof USER_ACTIONS>;

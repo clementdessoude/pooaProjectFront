@@ -1,25 +1,18 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { ActionTypes, SERIES_ACTIONS } from './actions';
+import { ActionTypes, USER_ACTIONS } from './actions';
 import { Api } from './api';
 
-export function* loginRequest(): Iterator<any> {
+export function* loginRequest(params: any): Iterator<any> {
     try {
-        const rep = yield call(Api.loginRequest, null);
+        const rep = yield call(Api.loginRequest, params.payload.login, params.payload.password);
         const data = rep.data as any;
-        // // add missing value from api
-        // data = data.map((item: any): ISerie => ({
-        //     description: item.description as string,
-        //     id: item.id,
-        //     imgSrc: BASE_IMG_URL + item.image as string,
-        //     title: item.name as string,
-        // }));
-        yield put(SERIES_ACTIONS.loginSuccess(data));
+        yield put(USER_ACTIONS.loginSuccess({user:data}));
     } catch (error) {
-        yield put(SERIES_ACTIONS.loginFailure());
+        yield put(USER_ACTIONS.loginFailure());
     }
 }
 
-export function* seriesSaga(): Iterator<any> {
+export function* userSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.LOGIN_REQUEST, loginRequest);
 }

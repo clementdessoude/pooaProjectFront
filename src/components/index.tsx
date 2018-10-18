@@ -1,5 +1,5 @@
 export * from './Image/Image';
 export * from './NavItem/NavItem';
-export * from './NavBar/NavBar';
+export { default as NavBar } from './NavBar/NavBar.container';
 export * from './SerieTile/SerieTile';
 export * from './DetailedSerieTile/DetailedSerieTile';
