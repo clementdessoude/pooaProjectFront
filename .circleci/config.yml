@@ -71,5 +71,5 @@ workflows:
             - build
           filters:
             branches:
-              only: add-circleci-integration
+              only: master
           context: SSH-keys
