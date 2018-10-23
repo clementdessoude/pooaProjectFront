@@ -31,6 +31,10 @@ export class RegisterPage extends React.Component<IRegisterProps,ILoginState> {
     this.setState({password});
   }
 
+  public handleBirthdateChange(birthdate: string) {
+    this.setState({birthdate});
+  }
+
   public handleRegister() {
     this.props.registerRequest(
       this.state.login,
@@ -66,6 +70,7 @@ export class RegisterPage extends React.Component<IRegisterProps,ILoginState> {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    onChange={(ev) => this.handleBirthdateChange(ev.target.value)}
                   />
                 <Button variant="contained" color="primary" className="RegisterPage-Button" onClick={() => this.handleRegister()}>
                     Register

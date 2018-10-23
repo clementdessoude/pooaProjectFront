@@ -24,6 +24,10 @@ export function userReducer(state : IUserState  = {}, action: Actions): IUserSta
             isFetchingLogin = false;
             isLoginError = true;
             return { ...state, isLoginError, isFetchingLogin};
+        // LOG OUT
+        case ActionTypes.LOG_OUT:
+            return {...state, user: undefined};
+        
 
         // Register
         case ActionTypes.REGISTER_REQUEST:

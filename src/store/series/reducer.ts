@@ -13,6 +13,14 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_SERIES_FAILURE:
             return {...state, };
 
+        // SEASONS fetch
+        case ActionTypes.FETCH_SEASONS_REQUEST:
+            return {...state, };
+        case ActionTypes.FETCH_SEASONS_SUCCESS:
+            return {...state, seasonsSerieDetails: action.payload ? action.payload.seasons : []};
+        case ActionTypes.FETCH_SEASONS_FAILURE:
+            return {...state, };
+
         // SERIE Details
         case ActionTypes.SET_CURRENT_SERIE:
             return {...state, serieDetails: action.payload ? action.payload.serie : undefined };

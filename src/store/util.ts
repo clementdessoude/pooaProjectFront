@@ -1,3 +1,6 @@
+import { IStore } from '../interfaces';
+
+export type StateSelector<T> = (state: IStore) => T
 
 export interface IAction<T extends string> {
     type: T;
