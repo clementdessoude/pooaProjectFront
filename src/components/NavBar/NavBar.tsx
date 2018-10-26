@@ -1,24 +1,25 @@
 import * as React from 'react';
 import './NavBar.css';
 
-import { RouteComponentProps, withRouter } from 'react-router';
+// import { RouteComponentProps } from 'react-router';
 import { NavItem } from '../NavItem/NavItem';
 
 
-interface INavBarProps extends RouteComponentProps<{}> {
+interface INavBarProps {
   isLogIn: boolean;
   logOut: () => void;
+  pushNavigation: (path: string) => void;
 }
 
 class NavBar extends React.Component<INavBarProps> {
 
   private NAV_ITEMS = [
-    { title: "Home", handler: () => this.props.history.push('/home') },
-    { title: "Log in", handler: () => this.props.history.push('/login'), isVisible: () => !this.props.isLogIn },
+    { title: "Home", handler: () => this.props.pushNavigation('/home') },
+    { title: "Log in", handler: () => this.props.pushNavigation('/login'), isVisible: () => !this.props.isLogIn },
     { title: "Log Out", handler: () => this.props.logOut(), isVisible: () => this.props.isLogIn },
-    { title: "Register", handler: () => this.props.history.push('/register'), isVisible: () => !this.props.isLogIn },
-    { title: "My List", handler: () => this.props.history.push('/watchlist'), isVisible: () => this.props.isLogIn },
-    { title: "Notifications", handler: () => this.props.history.push('/notifications'), isVisible: () => this.props.isLogIn }
+    { title: "Register", handler: () => this.props.pushNavigation('/register'), isVisible: () => !this.props.isLogIn },
+    { title: "My List", handler: () => this.props.pushNavigation('/watchlist'), isVisible: () => this.props.isLogIn },
+    { title: "Notifications", handler: () => this.props.pushNavigation('/notifications'), isVisible: () => this.props.isLogIn }
   ]
 
   public render() {
@@ -36,4 +37,4 @@ class NavBar extends React.Component<INavBarProps> {
   }
 }
 
-export default withRouter(NavBar);
+export default NavBar;

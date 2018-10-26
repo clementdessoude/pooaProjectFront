@@ -11,6 +11,8 @@ export enum ActionTypes {
     REGISTER_REQUEST = 'REGISTER_REQUEST',
     REGISTER_SUCCESS = 'REGISTER_SUCCESS',
     REGISTER_FAILURE = 'REGISTER_FAILURE',
+    
+    REGISTER_REMOVE_SUCCESS_ALERT = 'REGISTER_REMOVE_SUCCESS_ALERT',
 }
 
 export interface ILoginRequestPayload {
@@ -36,6 +38,8 @@ export const USER_ACTIONS = {
     registerFailure: () => createAction(ActionTypes.REGISTER_FAILURE),
     registerRequest: (payload: IRegisterRequestPayload) => createAction(ActionTypes.REGISTER_REQUEST, payload),
     registerSuccess: () => createAction(ActionTypes.REGISTER_SUCCESS),
+
+    registerRemoveSuccessAlert: () => createAction(ActionTypes.REGISTER_REMOVE_SUCCESS_ALERT),
 }
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;

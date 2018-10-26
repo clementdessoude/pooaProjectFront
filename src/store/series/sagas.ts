@@ -41,17 +41,7 @@ export function* fetchSeasons(params: any): Iterator<any> {
     }
 }
 
-export function* addSerieToWatchlistRequest(params: any): Iterator<any> {
-    try {
-        yield call(Api.addSerieToWatchList, params.payload.serieId, params.payload.userId);
-        yield put(SERIES_ACTIONS.addSerieToWatchlistSuccess());
-    } catch (error) {
-        yield put(SERIES_ACTIONS.addSerieToWatchlistFailure());
-    }
-}
-
 export function* seriesSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.FETCH_SERIES_REQUEST, fetchSeries);
-    yield takeEvery(ActionTypes.ADD_SERIE_TO_WATCHLIST_REQUEST, addSerieToWatchlistRequest);
     yield takeEvery(ActionTypes.FETCH_SEASONS_REQUEST, fetchSeasons);
 }

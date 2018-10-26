@@ -3,19 +3,22 @@ import * as React from 'react';
 import './RegisterPage.css';
 
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
+import DoneIcon from '@material-ui/icons/Done';
 
-interface ILoginState {
+interface IRegisterState {
     login: string;
     password: string;
     birthdate: string;
 }
 
 interface IRegisterProps {
+  displayLoginSuccess: boolean;
   registerRequest: (login: string, password: string, birthdate: string) => void;
 }
 
-export class RegisterPage extends React.Component<IRegisterProps,ILoginState> {
+export class RegisterPage extends React.Component<IRegisterProps,IRegisterState> {
 
   public componentWillMount(){
       const login = "";
@@ -76,6 +79,13 @@ export class RegisterPage extends React.Component<IRegisterProps,ILoginState> {
                     Register
                 </Button>
             </form>
+            {this.props.displayLoginSuccess ?
+                <Chip
+                  icon={<DoneIcon />}
+                  label="Registration Success ! You can now log in !"
+                  className="RegisterPage-ChipSuccess"
+                />
+            : null }
         </div>
       </div>
     );

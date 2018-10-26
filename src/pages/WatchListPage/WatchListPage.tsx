@@ -8,7 +8,7 @@ import { SerieTile } from '../../components';
 
 interface IWatchListPageProps {
   userId: string;
-  seriesInWatchList: ISerie[],
+  series: ISerie[],
   fetchUserWatchlist: (userId: string) => void;
 }
 
@@ -22,7 +22,7 @@ export class WatchListPage extends React.Component<IWatchListPageProps> {
     return (
       <div className="WatchListPage">
         WATCHLIST
-        {(this.props.seriesInWatchList || []).map(serie => 
+        {(this.props.series || []).map(serie => 
               <div key={`${serie.id}`} onClick={() => true}>
                 <SerieTile key={`${serie.id}`} title={serie.title} imgSrc={serie.imgSrc}/>
               </div>

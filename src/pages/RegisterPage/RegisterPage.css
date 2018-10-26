@@ -18,3 +18,8 @@
 .RegisterPage-Button{
     margin-top: 2rem !important;
 }
+
+.RegisterPage-ChipSuccess {
+    margin-top: 1.5rem;
+    background-color: #a2cf6e !important;
+}

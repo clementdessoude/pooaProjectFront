@@ -7,22 +7,32 @@ import { ISeason, ISerie } from '../../interfaces';
 import { DetailedSerieTile } from '../../components';
 
 interface ISerieDetailsPageProps {
+  displayRemove: boolean;
   serie: ISerie,
   seasons: ISeason[],
   userId: string | null,
   addSerieToWatchlist: (serieId: string, userId: string) => void,
-  fetchSeasons: (serieId: string) => void
+  fetchSeasons: (serieId: string) => void,
+  fetchUserWatchlist: (userId: string) => void;
+  removeSerieOfWatchlist: (serieId: string, userId: string) => void,
 }
 
 export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
 
   public componentWillMount() {
     this.props.fetchSeasons(this.props.serie.id);
+    if (this.props.userId) {
+      this.props.fetchUserWatchlist(this.props.userId);
+    }
   }
 
   public handleIconClick() {
     if (this.props.userId) {
-      this.props.addSerieToWatchlist(this.props.serie.id, this.props.userId)
+      if (this.props.displayRemove) {
+        this.props.removeSerieOfWatchlist(this.props.serie.id, this.props.userId)
+      } else {
+        this.props.addSerieToWatchlist(this.props.serie.id, this.props.userId)
+      }
     }
   }
 
@@ -34,7 +44,7 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
               title={this.props.serie.title} 
               imgSrc={this.props.serie.imgSrc} 
               description={this.props.serie.description}
-              iconType={'add'}
+              iconType={this.getIconType()}
               onIconClick={() => this.handleIconClick()}/>
         </div>
         <div>
@@ -44,5 +54,13 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
         </div>
       </div>
     );
+  }
+
+  private getIconType() {
+    if(this.props.userId){
+      return this.props.displayRemove ? 'delete' : 'add';
+    } else {
+      return 'none';
+    }
   }
 }

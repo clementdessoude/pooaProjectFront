@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 
+import { push } from 'connected-react-router';
+
 import { IStore } from "../../interfaces";
 import NavBar from './NavBar';
 
@@ -12,7 +14,8 @@ const mapStateToProps = (state: IStore) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  logOut: () => dispatch(USER_ACTIONS.logOut()),  
+  logOut: () => dispatch(USER_ACTIONS.logOut()),
+  pushNavigation: (path: string) => dispatch(push(path)),  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

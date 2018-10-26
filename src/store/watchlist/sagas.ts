@@ -32,7 +32,17 @@ export function* fetchUserWatchlist(params: any): Iterator<any> {
     }
 }
 
+export function* removeSerieOfWatchlistRequest(params: any): Iterator<any> {
+    try {
+        yield call(Api.removeSerieOfWatchList, params.payload.serieId, params.payload.userId);
+        yield put(WATCHLIST_ACTIONS.removeSerieOfWatchlistSuccess());
+    } catch (error) {
+        yield put(WATCHLIST_ACTIONS.removeSerieOfWatchlistFailure());
+    }
+}
+
 export function* watchlistSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.ADD_SERIE_TO_WATCHLIST_REQUEST, addSerieToWatchlistRequest);
     yield takeEvery(ActionTypes.FETCH_USER_WATCHLIST_REQUEST, fetchUserWatchlist);
+    yield takeEvery(ActionTypes.REMOVE_SERIE_OF_WATCHLIST_REQUEST, removeSerieOfWatchlistRequest);
 }

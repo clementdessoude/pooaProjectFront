@@ -6,4 +6,5 @@ export interface IUserState {
     isLoginError?: boolean;
     isFetchingRegistration?: boolean;
     isRegistrationError?: boolean; 
+    isRegistrationSuccess?: boolean;
 }

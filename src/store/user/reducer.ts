@@ -8,6 +8,7 @@ export function userReducer(state : IUserState  = {}, action: Actions): IUserSta
 
     let isFetchingRegistration: boolean;
     let isRegistrationError: boolean;
+    let isRegistrationSuccess: boolean;
 
     switch (action.type) {
         // LOGIN 
@@ -33,15 +34,21 @@ export function userReducer(state : IUserState  = {}, action: Actions): IUserSta
         case ActionTypes.REGISTER_REQUEST:
             isFetchingRegistration = true;
             isRegistrationError = false;
-            return { ...state, isFetchingRegistration, isRegistrationError };
+            isRegistrationSuccess = false;
+            return { ...state, isFetchingRegistration, isRegistrationError, isRegistrationSuccess };
         case ActionTypes.REGISTER_SUCCESS:
             isFetchingRegistration = false;
             isRegistrationError = false;
-            return { ...state, isFetchingRegistration, isRegistrationError };
+            isRegistrationSuccess = true;
+            return { ...state, isFetchingRegistration, isRegistrationError, isRegistrationSuccess };
         case ActionTypes.REGISTER_FAILURE:
             isFetchingRegistration = false;
             isRegistrationError = true;
-            return { ...state, isRegistrationError, isFetchingRegistration };
+            isRegistrationSuccess = false;
+            return { ...state, isRegistrationError, isFetchingRegistration, isRegistrationSuccess };
+        case ActionTypes.REGISTER_REMOVE_SUCCESS_ALERT:
+            isRegistrationSuccess = false;
+            return {...state, isRegistrationSuccess};
 
         default:
             return state;

@@ -13,10 +13,6 @@ export enum ActionTypes {
     FETCH_SEASONS_FAILURE = 'FETCH_SEASONS_FAILURE',
 
     SET_CURRENT_SERIE = 'SET_CURRENT_SERIE',
-
-    ADD_SERIE_TO_WATCHLIST_REQUEST = 'ADD_SERIE_TO_WATCHLIST_REQUEST',
-    ADD_SERIE_TO_WATCHLIST_SUCCESS = 'ADD_SERIE_TO_WATCHLIST_SUCCESS',
-    ADD_SERIE_TO_WATCHLIST_FAILURE = 'ADD_SERIE_TO_WATCHLIST_FAILURE',
 }
 
 export interface IFetchSeriesSuccessPayload {
@@ -27,10 +23,6 @@ export interface ISeriedetailsRequestPayload {
     serie: ISerie;
 }
 
-export interface IAddSerieToWatchlistRequestPayload {
-    serieId: string;
-    userId: string;
-}
 
 export interface IFetchSeasonsSuccessPayload {
     seasons: ISeason[];
@@ -51,9 +43,6 @@ export const SERIES_ACTIONS = {
 
     serieDetailsRequest: (payload: ISeriedetailsRequestPayload) => createAction(ActionTypes.SET_CURRENT_SERIE, payload),
 
-    addSerieToWatchlistFailure: () => createAction(ActionTypes.ADD_SERIE_TO_WATCHLIST_FAILURE),
-    addSerieToWatchlistRequest: (payload: IAddSerieToWatchlistRequestPayload) => createAction(ActionTypes.ADD_SERIE_TO_WATCHLIST_REQUEST, payload),
-    addSerieToWatchlistSuccess: () => createAction(ActionTypes.ADD_SERIE_TO_WATCHLIST_SUCCESS),
 }
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;

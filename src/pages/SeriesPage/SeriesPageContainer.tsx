@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { push } from 'connected-react-router'
+import { push } from 'connected-react-router';
 
 import { ISerie, IStore } from "../../interfaces";
 import { SeriesPage } from './SeriesPage';

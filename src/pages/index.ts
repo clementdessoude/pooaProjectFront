@@ -3,4 +3,4 @@ export { default as LoginPage } from './LoginPage/LoginPageContainer';
 export { default as RegisterPage } from './RegisterPage/RegisterPageContainer';
 export { default as SerieDetailsPage } from './SerieDetailsPage/SerieDetailsPageContainer';
 export { default as WatchListPage } from './WatchListPage/WatchListPageContainer';
-export * from './NotificationsPage/NotificationsPage';
+export { default as NotificationsPage } from './NotificationsPage/NotificationsPageContainer';
