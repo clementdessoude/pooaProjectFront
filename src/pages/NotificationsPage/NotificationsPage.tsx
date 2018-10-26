@@ -3,6 +3,8 @@ import * as React from 'react';
 import { INotification } from '../../interfaces';
 import './NotificationsPage.css';
 
+import { Notification } from '../../components';
+
 interface INotificationsPageProps {
   userId: string;
   notifications: INotification[];
@@ -19,7 +21,11 @@ export class NotificationsPage extends React.Component<INotificationsPageProps> 
     return (
       <div className="NotificationsPage">
         NOTIFICATIONS PAGE
-        {this.props.notifications}
+        <div className="NotificationsPage-NotifsContainer">
+            {(this.props.notifications || []).map((notif, index) => 
+                <Notification key={`${notif.message}-${index}`} imgSrc={"test"} message={notif.message}/>
+            )}
+        </div>
       </div>
     );
   }

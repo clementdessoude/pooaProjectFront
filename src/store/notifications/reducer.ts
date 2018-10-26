@@ -9,7 +9,7 @@ export function notificationReducer(state : INotificationsState  = {}, action: A
         case ActionTypes.FETCH_USER_NOTIFICATIONS_REQUEST:
             return {...state, };
         case ActionTypes.FETCH_USER_NOTIFICATIONS_SUCCESS:
-            return {...state, };
+            return {...state, notifications: action.payload ? action.payload.notifications : []};
         case ActionTypes.FETCH_USER_NOTIFICATIONS_FAILURE:
             return {...state, };
         default:
