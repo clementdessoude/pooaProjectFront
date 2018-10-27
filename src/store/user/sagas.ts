@@ -27,9 +27,10 @@ export function* registerRequest(params: any): Iterator<any> {
     }
 }
 
-export function* afterLogin(): Iterator<any> {
+export function* goToHome(): Iterator<any> {
     yield put(push('/home'));
 }
+
 
 export function* afterRegistrationSuccess(): Iterator<any> {
     yield delay(5000);
@@ -40,6 +41,7 @@ export function* afterRegistrationSuccess(): Iterator<any> {
 export function* userSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.LOGIN_REQUEST, loginRequest);
     yield takeEvery(ActionTypes.REGISTER_REQUEST, registerRequest);
-    yield takeEvery(ActionTypes.LOGIN_SUCCESS, afterLogin);
+    yield takeEvery(ActionTypes.LOGIN_SUCCESS, goToHome);
+    yield takeEvery(ActionTypes.LOG_OUT, goToHome);
     yield takeEvery(ActionTypes.REGISTER_SUCCESS, afterRegistrationSuccess);
 }

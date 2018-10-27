@@ -1,14 +1,22 @@
 import { connect } from "react-redux";
 
 
-import { IStore } from "../../interfaces";
+import { ISerie, IStore } from "../../interfaces";
 import { WatchListPage } from './WatchListPage';
 
 import { WATCHLIST_ACTIONS } from '../../store/watchlist';
 
+const getSeries = (state: IStore) => {
+    return (state.watchlistReducer.seriesInUserWatchlist || []).sort((s1: ISerie, s2: ISerie) => 
+        {
+            return s1.title > s2.title ? 1 : s1.title === s2.title ? 0 : -1
+        } 
+    )
+};
+
 const mapStateToProps = (state: IStore) => {
     return {
-        series: state.watchlistReducer.seriesInUserWatchlist,
+        series: getSeries(state),
         userId: state.userReducer.user ? state.userReducer.user.id : null,
     };
 };

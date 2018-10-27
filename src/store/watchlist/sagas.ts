@@ -10,6 +10,7 @@ export function* addSerieToWatchlistRequest(params: any): Iterator<any> {
     try {
         yield call(Api.addSerieToWatchList, params.payload.serieId, params.payload.userId);
         yield put(WATCHLIST_ACTIONS.addSerieToWatchlistSuccess());
+        yield put(WATCHLIST_ACTIONS.fetchUserWatchlistRequest({userId: params.payload.userId}));
     } catch (error) {
         yield put(WATCHLIST_ACTIONS.addSerieToWatchlistFailure());
     }
@@ -36,6 +37,7 @@ export function* removeSerieOfWatchlistRequest(params: any): Iterator<any> {
     try {
         yield call(Api.removeSerieOfWatchList, params.payload.serieId, params.payload.userId);
         yield put(WATCHLIST_ACTIONS.removeSerieOfWatchlistSuccess());
+        yield put(WATCHLIST_ACTIONS.fetchUserWatchlistRequest({userId: params.payload.userId}));
     } catch (error) {
         yield put(WATCHLIST_ACTIONS.removeSerieOfWatchlistFailure());
     }

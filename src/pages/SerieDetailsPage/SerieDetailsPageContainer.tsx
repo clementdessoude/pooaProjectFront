@@ -8,9 +8,9 @@ import { SERIES_ACTIONS } from '../../store/series';
 import { WATCHLIST_ACTIONS } from '../../store/watchlist';
 
 const displayRemove = (state: IStore): boolean => {
-    const series = state.watchlistReducer.seriesInUserWatchlist;
-    if (series && state.serieReducer.serieDetails) {
-        if (series.indexOf(state.serieReducer.serieDetails)) {
+    const seriesId = (state.watchlistReducer.seriesInUserWatchlist || []).map(s => s.id);
+    if (seriesId && state.serieReducer.serieDetails) {
+        if (seriesId.indexOf(state.serieReducer.serieDetails.id) !== -1) {
             return true;
         }
     }
