@@ -6,6 +6,12 @@ import { ISeason, ISerie } from '../../interfaces';
 
 import { DetailedSerieTile } from '../../components';
 
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 interface ISerieDetailsPageProps {
   displayRemove: boolean;
   serie: ISerie,
@@ -39,7 +45,7 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
   public render() {
     return (
       <div className="SerieDetailsPage">
-        <div className="SerieDetailsPage-Tiles">
+        <div className="SerieDetailsPage-Serie">
            <DetailedSerieTile 
               title={this.props.serie.title} 
               imgSrc={this.props.serie.imgSrc} 
@@ -47,9 +53,20 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
               iconType={this.getIconType()}
               onIconClick={() => this.handleIconClick()}/>
         </div>
-        <div>
+        <div className="SerieDetailsPage-Seasons">
           {(this.props.seasons || []).map((season: ISeason, index) => 
-              <span key={`${season.name}-${index}`}>{season.name}</span>
+              <ExpansionPanel key={`${season.name}-${index}`}>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>{season.name}</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <div className="SerieDetailsPage-Episodes">
+                    {(season.episodes || []).map((episode, index2) => 
+                      <div key={`${episode.name}-${index2}`}>{episode.name}</div>)
+                    }
+                  </div>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
           )}
         </div>
       </div>

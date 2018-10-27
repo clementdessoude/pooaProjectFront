@@ -30,10 +30,11 @@ export function* fetchSeasons(params: any): Iterator<any> {
         let data = rep.data;
         // // add missing value from api
         data = data.map((item: any): ISeason => ({
-            id: item.id,
+            episodes: item.episodes.map((episode: any) => ({...episode, id: episode.id.toString()})),
+            id: (item.id as number).toString(),
             imgSrc: BASE_IMG_URL + item.image as string,
             name: item.name as string,
-            number: 4
+            number: item.seasonNumber,
         }));
         yield put(SERIES_ACTIONS.fecthSeasonsSuccess({seasons: data}));
     } catch (error) {

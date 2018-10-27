@@ -19,8 +19,6 @@ interface IDetailedSerieTileProps {
 
 export class DetailedSerieTile extends React.Component<IDetailedSerieTileProps> {
   public render() {
-    // tslint:disable-next-line:no-console
-    console.log("icon type", this.props.iconType);
     return (
       <div className="DetailedSerie">
         <div className="DetailedSerieTileContainer">

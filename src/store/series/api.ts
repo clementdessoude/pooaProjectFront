@@ -19,6 +19,16 @@ const fetchSeasons = async (serieId: string) => {
     return rep;
 }
 
+const fetchEpisodes = async (seasonId: string) => {
+
+    const url = BASE_API_URL + `/episode/season-id/${seasonId}`;
+    // tslint:disable:no-console
+    const rep = await axios.get(url);
+    console.log('api fetch episode for season id', seasonId, rep);
+    return rep;
+}
+
+
 const addSerieToWatchList = async (serieId: string, userId: number) => {
     const url = BASE_API_URL + `/watchlist/userId/${userId}/serieId/${serieId}`;
     const rep = await axios.get(url);
@@ -28,6 +38,7 @@ const addSerieToWatchList = async (serieId: string, userId: number) => {
 
 export const Api = {
     addSerieToWatchList,
+    fetchEpisodes,
     fetchSeasons,
     fetchSeries,
 };
