@@ -23,7 +23,7 @@
 
 .NavContainer {
   contain: size layout;
-  min-width: 150px;
-  background-color: #839dc6;
+  min-width: 230px;
+  background-color: #65c5ff;
   /* color: white; */
 }

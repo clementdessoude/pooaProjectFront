@@ -3,6 +3,7 @@ export * from './user';
 export * from './season';
 export * from './notification';
 export * from './episode';
+export * from './genre';
 
 export * from './store/series-state';
 export * from './store/notification-state';

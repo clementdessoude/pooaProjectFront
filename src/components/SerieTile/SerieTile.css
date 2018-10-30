@@ -8,4 +8,18 @@
 .SerieTile-ImageContainer {
     height: 350px;
     width: 250px;
+    position: relative;
+}
+
+.SerieTile-Add {
+    position: absolute !important;
+    top: -12px !important;
+    right: -12px !important;
+}
+
+.SerieTile-Title {
+    /* padding-top: 0.5rem; */
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: left;
 }

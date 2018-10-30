@@ -4,11 +4,8 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
 import { NavBar } from './components';
-import { LoginPage, NotificationsPage, RegisterPage, SerieDetailsPage, SeriesPage, WatchListPage } from './pages';
+import { LoginPage, NotificationsPage, RecommandationPage, RegisterPage, SerieDetailsPage, SeriesPage, WatchListPage } from './pages';
 
-// interface IAppProps extends RouteComponentProps<{}> {
-//   // isLoginVisible: boolean;
-// }
 
 class App extends React.Component<{}> {
 
@@ -28,6 +25,7 @@ class App extends React.Component<{}> {
                 <Route path='/serie-details' component={SerieDetailsPage} />
                 <Route path='/watchlist' component={WatchListPage} />
                 <Route path='/notifications' component={NotificationsPage} />
+                <Route path='/recommandation' component={RecommandationPage} />
                 <Route path='/' component={SeriesPage} /> 
               </Switch>
             </div>

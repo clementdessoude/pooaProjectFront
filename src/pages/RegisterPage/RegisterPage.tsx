@@ -3,9 +3,13 @@ import * as React from 'react';
 import './RegisterPage.css';
 
 import Button from '@material-ui/core/Button';
-import Chip from '@material-ui/core/Chip';
+// import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
-import DoneIcon from '@material-ui/icons/Done';
+// import DoneIcon from '@material-ui/icons/Done';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 interface IRegisterState {
     login: string;
@@ -79,13 +83,35 @@ export class RegisterPage extends React.Component<IRegisterProps,IRegisterState>
                     Register
                 </Button>
             </form>
-            {this.props.displayLoginSuccess ?
-                <Chip
-                  icon={<DoneIcon />}
-                  label="Registration Success ! You can now log in !"
-                  className="RegisterPage-ChipSuccess"
-                />
-            : null }
+            <Snackbar
+                    anchorOrigin={{
+                      horizontal: 'left',
+                      vertical: 'bottom',
+                    }}
+                    // open={this.props.displayLoginSuccess}
+                    open={this.props.displayLoginSuccess}
+                    autoHideDuration={4000}
+                    // onClose={this.handleClose}
+                  >
+                      <SnackbarContent
+                        className="RegisterPage-SnackBarContent"
+                        aria-describedby="client-snackbar"
+                        message={
+                          <span id="client-snackbar">
+                            <CheckCircleIcon/>
+                            Registration Success ! You can now log in !
+                          </span>
+                        }
+                        />
+                </Snackbar>
+            {/* {this.props.displayLoginSuccess ?
+                // <Chip
+                //   icon={<DoneIcon />}
+                //   label="Registration Success ! You can now log in !"
+                //   className="RegisterPage-ChipSuccess"
+                // />
+                null
+            : null } */}
         </div>
       </div>
     );

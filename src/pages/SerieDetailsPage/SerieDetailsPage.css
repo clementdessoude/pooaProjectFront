@@ -5,3 +5,12 @@
     align-items: center;
     width: 100%;
 }
+
+.SerieDetailsPage-Episodes ul {
+    width: 100% !important;
+}
+
+.SerieDetailsPage-Episodes ul li {
+    padding-top: 0;
+    padding-bottom: 0;
+}

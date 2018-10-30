@@ -1,0 +1,15 @@
+.MultipleSlider {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.MultipleSlider-Bloc {
+    padding: 0.7rem 1rem;
+    width: 200px;
+}
+
+#label {
+    padding-bottom: 0.6rem !important;
+}

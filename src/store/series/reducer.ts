@@ -21,6 +21,22 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_SEASONS_FAILURE:
             return {...state, };
 
+        // GENRES fetch
+        case ActionTypes.FETCH_GENRES_REQUEST:
+            return {...state, };
+        case ActionTypes.FETCH_GENRES_SUCCESS:
+            return {...state, allGenre: action.payload ? action.payload.genre : []};
+        case ActionTypes.FETCH_GENRES_FAILURE:
+            return {...state, };
+
+        // SERIES PREF fetch
+        case ActionTypes.FETCH_SERIES_PREF_REQUEST:
+            return {...state, };
+        case ActionTypes.FETCH_SERIES_PREF_SUCCESS:
+            return {...state, recommandedSeries: action.payload ? action.payload.recommandedSeries : []};
+        case ActionTypes.FETCH_SERIES_PREF_FAILURE:
+            return {...state, };
+
         // SERIE Details
         case ActionTypes.SET_CURRENT_SERIE:
             return {...state, serieDetails: action.payload ? action.payload.serie : undefined };

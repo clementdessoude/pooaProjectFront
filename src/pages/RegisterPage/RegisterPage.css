@@ -23,3 +23,16 @@
     margin-top: 1.5rem;
     background-color: #a2cf6e !important;
 }
+
+#client-snackbar {
+    display: flex;
+    align-items: center;
+}
+
+#client-snackbar > * {
+    padding-right: 1rem;
+}
+
+.RegisterPage-SnackBarContent {
+    background-color: #a2cf6e !important;
+}
