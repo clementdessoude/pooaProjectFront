@@ -17,6 +17,9 @@ import Notifications from '@material-ui/icons/Notifications';
 import PermIdentity from '@material-ui/icons/PermIdentity';
 import Stars from '@material-ui/icons/Stars';
 
+import Timeline from '@material-ui/icons/Timeline';
+
+
 import ExitToApp from '@material-ui/icons/ExitToApp';
 
 interface INavBarProps {
@@ -34,7 +37,8 @@ class NavBar extends React.Component<INavBarProps> {
     { title: "Register", handler: () => this.props.pushNavigation('/register'), isVisible: () => !this.props.isLogIn, icon: HowToReg },
     { title: "My List", handler: () => this.props.pushNavigation('/watchlist'), isVisible: () => this.props.isLogIn, icon: ListAlt },
     { title: "Recommandation", handler: () => this.props.pushNavigation('/recommandation'), isVisible: () => this.props.isLogIn, icon: Stars },
-    { title: "Notifications", handler: () => this.props.pushNavigation('/notifications'), isVisible: () => this.props.isLogIn, icon: Notifications }
+    { title: "Notifications", handler: () => this.props.pushNavigation('/notifications'), isVisible: () => this.props.isLogIn, icon: Notifications },
+    { title: "Statistiques", handler: () => this.props.pushNavigation('/stats'), isVisible: () => this.props.isLogIn, icon: Timeline }
   ]
 
   public render() {
