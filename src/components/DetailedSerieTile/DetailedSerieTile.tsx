@@ -3,6 +3,8 @@ import './DetailedSerieTile.css';
 
 import Button from '@material-ui/core/Button';
 
+import Chip from '@material-ui/core/Chip';
+
 import { Image } from '../Image/Image';
 
 
@@ -12,6 +14,7 @@ interface IDetailedSerieTileProps {
     description: string;
     imgSrc: string;
     iconType: 'add' | 'delete' | 'none';
+    genres?: string[];
     onIconClick: () => void;
 };
 
@@ -26,6 +29,17 @@ export class DetailedSerieTile extends React.Component<IDetailedSerieTileProps> 
             <div className="DetailedSerieTile-Description">
                 <span className="DetailedSerieTile-Title"> {this.props.title} </span>
                 <span className="DetailedSerieTile-DescriptionText">{this.props.description}</span>
+                <div className="DetailedSerieTile-Genres">
+                {(this.props.genres || []).map((genre, index) => 
+                    // <span key={`${genre}-${index}`}>{genre}</span>
+                    <Chip
+                        key={`${genre}-${index}`}
+                        label={genre}
+                        color="secondary"
+                        className="DetailedSerieTile-GenreChip"
+                    />
+                )}
+                </div>
                 {this.props.iconType === 'none' ? null :
                     // <Button variant="fab" color="primary" aria-label="Add" className="DetailedSerieTile-Add" 
                     //     onClick={() => this.props.onIconClick()}>

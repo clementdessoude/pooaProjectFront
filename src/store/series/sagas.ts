@@ -14,6 +14,7 @@ export function* fetchSeries(): Iterator<any> {
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
             description: item.description as string,
+            genres: item.genres.map((g: any) => ({...g, id: g.id.toString()})),
             id: item.id,
             imgSrc: BASE_IMG_URL + item.image as string,
             title: item.name as string,
@@ -69,6 +70,7 @@ export function* fetchSeriesPref(params: any): Iterator<any> {
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
             description: item.description as string,
+            genres: item.genres.map((g: any) => ({...g, id: g.id.toString()})),
             id: item.id,
             imgSrc: BASE_IMG_URL + item.image as string,
             title: item.name as string,

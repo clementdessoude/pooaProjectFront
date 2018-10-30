@@ -29,3 +29,15 @@
     font-size: 1.3rem;
     font-weight: bold;
 }
+
+.DetailedSerieTile-GenreChip {
+    margin: 0.2rem !important;
+}
+
+.DetailedSerieTile-Genres {
+    padding-bottom: 1rem;
+}
+
+.DetailedSerieTile-Add {
+    max-width: 400px;
+}

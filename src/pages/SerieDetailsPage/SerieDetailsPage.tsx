@@ -60,7 +60,8 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
               imgSrc={this.props.serie.imgSrc}
               description={this.props.serie.description}
               iconType={this.getIconType()}
-              onIconClick={() => this.handleIconClick()}/>
+              onIconClick={() => this.handleIconClick()}
+              genres={this.props.serie.genres.map(g => g.name)}/>
         </div>
         <div className="SerieDetailsPage-Seasons">
           {(this.props.seasons || []).map((season: ISeason, index) =>
