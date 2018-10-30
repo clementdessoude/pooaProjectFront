@@ -14,9 +14,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { Image } from '../../components'
+
 
 interface ISerieDetailsPageProps {
   displayRemove: boolean;
@@ -52,15 +55,15 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
     return (
       <div className="SerieDetailsPage">
         <div className="SerieDetailsPage-Serie">
-           <DetailedSerieTile 
-              title={this.props.serie.title} 
-              imgSrc={this.props.serie.imgSrc} 
+           <DetailedSerieTile
+              title={this.props.serie.title}
+              imgSrc={this.props.serie.imgSrc}
               description={this.props.serie.description}
               iconType={this.getIconType()}
               onIconClick={() => this.handleIconClick()}/>
         </div>
         <div className="SerieDetailsPage-Seasons">
-          {(this.props.seasons || []).map((season: ISeason, index) => 
+          {(this.props.seasons || []).map((season: ISeason, index) =>
               <ExpansionPanel key={`${season.name}-${index}`}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography>{season.name}</Typography>
@@ -68,22 +71,31 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
                 <ExpansionPanelDetails>
                   <div className="SerieDetailsPage-Episodes">
                   <List>
-                    {(season.episodes || []).map((episode, index2) => 
+                    {(season.episodes || []).map((episode, index2) =>
                       // <div key={`${episode.name}-${index2}`}>{episode.name}</div>
-                      
+
                         <ListItem key={`${episode.name}-${index2}`}>
+                          <div className="SerieDetailsPage-EpisodeImage">
+                            <Image imgSrc={episode.imgSrc}/>
+                          </div>
                           <ListItemIcon>
-                             <Checkbox /> 
+                             <Checkbox />
                           </ListItemIcon>
-                          <ListItemText primary={`${episode.episodeNumber}-${episode.name}`} />
-                          {/* <ListItemSecondaryAction>
-                            <Switch
-                              onChange={this.handleToggle('wifi')}
-                              checked={this.state.checked.indexOf('wifi') !== -1}
-                            />
-                          </ListItemSecondaryAction> */}
-                        </ListItem>
-                      
+                          <div>
+                              {/* <ListItemText primary={`${episode.episodeNumber}-${episode.name}`} /> */}
+                              <span className="SerieDetailsPage-EpisodeTitle">{`${episode.episodeNumber}-${episode.name}`}</span>
+                              <div className="SerieDetailsPage-EpisodeDescription">
+                                <span>{episode.description ? `${episode.description}...` : "No Description"}</span>
+                              </div>
+                              {/* <ListItemSecondaryAction>
+                                <Switch
+                                  onChange={this.handleToggle('wifi')}
+                                  checked={this.state.checked.indexOf('wifi') !== -1}
+                                />
+                              </ListItemSecondaryAction> */}
+                          </div>
+                          </ListItem>
+
                     )}
                     </List>
                   </div>

@@ -14,3 +14,13 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.SerieDetailsPage-EpisodeImage {
+    height: 120px;
+    min-width: 200px;
+    padding: 0.7rem;
+}
+.SerieDetailsPage-EpisodeTitle {
+    display: block;
+    font-weight: bold;
+}

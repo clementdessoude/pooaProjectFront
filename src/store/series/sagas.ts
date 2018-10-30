@@ -4,7 +4,7 @@ import { IEpisode, IGenre, ISeason, ISerie } from '../../interfaces';
 import { ActionTypes, SERIES_ACTIONS } from './actions';
 import { Api } from './api';
 
-import { BASE_IMG_URL } from '../../const/api.const';
+import { BASE_IMG_URL, BASE_IMG_URL_EPISODE, IMG_URL_EMPTY } from '../../const/api.const';
 
 
 export function* fetchSeries(): Iterator<any> {
@@ -30,7 +30,9 @@ export function* fetchSeasons(params: any): Iterator<any> {
         let data = rep.data;
         // // add missing value from api
         data = data.map((item: any): ISeason => ({
-            episodes: item.episodes.map((episode: any) => ({...episode, id: episode.id.toString()}))
+            episodes: item.episodes.map((episode: any) => ({...episode, 
+                    id: episode.id.toString(),
+                    imgSrc: episode.imageURL ? BASE_IMG_URL_EPISODE + episode.imageURL : IMG_URL_EMPTY}))
                 .sort((a: IEpisode, b: IEpisode) => {
                     return a.episodeNumber > b.episodeNumber ? 1 : a.episodeNumber === b.episodeNumber ? 0 : -1
                 }),
