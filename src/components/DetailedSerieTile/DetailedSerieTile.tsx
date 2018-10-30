@@ -2,8 +2,6 @@ import * as React from 'react';
 import './DetailedSerieTile.css';
 
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import Cancel from '@material-ui/icons/Cancel';
 
 import { Image } from '../Image/Image';
 
@@ -27,11 +25,15 @@ export class DetailedSerieTile extends React.Component<IDetailedSerieTileProps> 
             </div>
             <div className="DetailedSerieTile-Description">
                 <span className="DetailedSerieTile-Title"> {this.props.title} </span>
-                <span className="DetailedSerieTile-Description">{this.props.description}</span>
+                <span className="DetailedSerieTile-DescriptionText">{this.props.description}</span>
                 {this.props.iconType === 'none' ? null :
-                    <Button variant="fab" color="primary" aria-label="Add" className="DetailedSerieTile-Add" 
+                    // <Button variant="fab" color="primary" aria-label="Add" className="DetailedSerieTile-Add" 
+                    //     onClick={() => this.props.onIconClick()}>
+                    //     {this.props.iconType === 'add' ? <AddIcon /> : <Cancel />}
+                    // </Button>
+                    <Button variant="contained" color="primary" className="DetailedSerieTile-Add"
                         onClick={() => this.props.onIconClick()}>
-                        {this.props.iconType === 'add' ? <AddIcon /> : <Cancel />}
+                        {this.props.iconType === 'add' ? "Add To Watchlist" : "Remove From Watchlist"}
                     </Button>
                 }
             </div>
