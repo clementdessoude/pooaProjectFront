@@ -4,7 +4,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
 import { NavBar } from './components';
-import { LoginPage, NotificationsPage, RecommandationPage, RegisterPage, SerieDetailsPage, SeriesPage, WatchListPage } from './pages';
+import { LoginPage, NotificationsPage, RecommandationPage, RegisterPage, SerieDetailsPage, SeriesPage, StatistiquesPage, WatchListPage } from './pages';
 
 
 class App extends React.Component<{}> {
@@ -26,6 +26,7 @@ class App extends React.Component<{}> {
                 <Route path='/watchlist' component={WatchListPage} />
                 <Route path='/notifications' component={NotificationsPage} />
                 <Route path='/recommandation' component={RecommandationPage} />
+                <Route path='/stats' component={StatistiquesPage} />
                 <Route path='/' component={SeriesPage} /> 
               </Switch>
             </div>

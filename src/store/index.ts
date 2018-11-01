@@ -10,6 +10,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { notificationReducer, notificationsSaga} from '../store/notifications';
 import { serieReducer, seriesSaga } from '../store/series';
+import { statsReducer, statsSaga} from '../store/stats';
 import { userReducer, userSaga } from '../store/user';
 import { watchlistReducer, watchlistSaga} from '../store/watchlist';
 
@@ -24,6 +25,7 @@ const rootReducer = connectRouter(history)(
     combineReducers({
         notificationReducer,
         serieReducer,
+        statsReducer,
         userReducer,
         watchlistReducer,
     }));
@@ -44,3 +46,4 @@ sagaMiddleware.run(seriesSaga);
 sagaMiddleware.run(userSaga);
 sagaMiddleware.run(watchlistSaga);
 sagaMiddleware.run(notificationsSaga);
+sagaMiddleware.run(statsSaga);

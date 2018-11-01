@@ -5,3 +5,4 @@ export { default as SerieDetailsPage } from './SerieDetailsPage/SerieDetailsPage
 export { default as WatchListPage } from './WatchListPage/WatchListPageContainer';
 export { default as NotificationsPage } from './NotificationsPage/NotificationsPageContainer';
 export { default as RecommandationPage } from './RecommandationPage/RecommandationPageContainer';
+export { default as StatistiquesPage } from './StatistiquesPage/StatistiquesPageContainer';
