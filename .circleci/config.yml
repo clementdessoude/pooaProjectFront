@@ -13,7 +13,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-      
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -29,13 +29,13 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install 
+      - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       # run tests!
       - run: npm test
       - run: npm run build
@@ -44,6 +44,27 @@ jobs:
           root: ~/front
           paths:
             - build/*
+            - Dockerfile
+
+  docker:
+    <<: *defaults
+    machine:
+      enabled: true
+    steps:
+      - attach_workspace:
+          at: ~/front
+      - run:
+          name: Set API URL to http://localhost:8080/api
+          command: find . -type f -exec sed -i 's/http:\/\/pooaseries.fr:8080\/api/http:\/\/localhost:8080\/api/g' {} +
+      - run:
+          name: Build image
+          command: |
+            docker build . -f ~/front/Dockerfile -t clement26695/myseries_front
+      - run:
+          name: Push image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push clement26695/myseries_front
 
   deploy:
     <<: *defaults
@@ -66,6 +87,12 @@ workflows:
   build-and-deploy:
     jobs:
       - build
+      - docker:
+          requires:
+              - build
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
