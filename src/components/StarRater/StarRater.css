@@ -1,0 +1,5 @@
+.StarRater-container {
+    display: flex;
+    flex-direction: row;
+    color: #ffd906;
+}

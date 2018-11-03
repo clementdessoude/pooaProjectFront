@@ -2,9 +2,9 @@
 import * as React from 'react';
 import './SerieDetailsPage.css';
 
-import { ISeason, ISerie } from '../../interfaces';
+import { IEpisode, ISeason, ISerie } from '../../interfaces';
 
-import { DetailedSerieTile } from '../../components';
+import { DetailedSerieTile, StarRater } from '../../components';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -51,6 +51,11 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
     }
   }
 
+  public onStarChange(value: number, episode: IEpisode) {
+    // tslint:disable-next-line:no-console
+    console.log("value changed for", value, episode);
+  }
+
   public render() {
     return (
       <div className="SerieDetailsPage">
@@ -72,16 +77,18 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
                 <ExpansionPanelDetails>
                   <div className="SerieDetailsPage-Episodes">
                   <List>
-                    {(season.episodes || []).map((episode, index2) =>
+                    {(season.episodes || []).map((episode: IEpisode, index2) =>
                       // <div key={`${episode.name}-${index2}`}>{episode.name}</div>
 
                         <ListItem key={`${episode.name}-${index2}`}>
                           <div className="SerieDetailsPage-EpisodeImage">
                             <Image imgSrc={episode.imgSrc}/>
                           </div>
-                          <ListItemIcon>
-                             <Checkbox />
-                          </ListItemIcon>
+                          {episode.isSeen === undefined ? null :
+                            <ListItemIcon>
+                                <Checkbox checked={episode.isSeen}/> 
+                            </ListItemIcon>
+                          }
                           <div>
                               {/* <ListItemText primary={`${episode.episodeNumber}-${episode.name}`} /> */}
                               <span className="SerieDetailsPage-EpisodeTitle">{`${episode.episodeNumber}-${episode.name}`}</span>
@@ -94,6 +101,7 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
                                   checked={this.state.checked.indexOf('wifi') !== -1}
                                 />
                               </ListItemSecondaryAction> */}
+                            <StarRater value={1} onChange={(v) => this.onStarChange(v, episode)}/>
                           </div>
                           </ListItem>
 

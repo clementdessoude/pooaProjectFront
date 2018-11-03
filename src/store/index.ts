@@ -19,6 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist: ['statsReducer']
 };
 
 const rootReducer = connectRouter(history)(

@@ -5,5 +5,5 @@ export interface IEpisode {
     description: string;
     imgSrc: string;
     episodeNumber: number;
-
+    isSeen?: boolean;
 }

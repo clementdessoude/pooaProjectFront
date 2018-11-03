@@ -21,7 +21,10 @@ export interface IFetchStatsRequestPayload {
 }
 
 export interface IFetchStatsSuccessPayload {
-    nbEpisodesSeen: number;
+    episodeSeenCount: number;
+    serieInWatchlistCount: number;
+    serieByGenreCount: any[];
+    totalWatchingTime: number;
 }
 
 
