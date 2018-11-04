@@ -6,4 +6,6 @@ export interface IEpisode {
     imgSrc: string;
     episodeNumber: number;
     isSeen?: boolean;
+    rate?: number;
+    avgRate?: number;
 }

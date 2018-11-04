@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import { delay } from 'redux-saga';
+
 import { IEpisode, IGenre, ISeason, ISerie } from '../../interfaces';
 import { ActionTypes, SERIES_ACTIONS } from './actions';
 import { Api } from './api';
@@ -81,9 +83,30 @@ export function* fetchSeriesPref(params: any): Iterator<any> {
     }
 }
 
+export function* fetchEpisodeInfoUser(params: any): Iterator<any> {
+    try {
+        yield delay(600);
+        const rep = yield call(Api.fetchEpisodeInfoUser, params.payload.userId, params.payload.serieId);
+        yield put(SERIES_ACTIONS.fetchUserEpisodesSeenSuccess({episodesIdInfo: rep.data}));
+    } catch (error) {
+        yield put(SERIES_ACTIONS.fetchUserEpisodesSeenFailure());
+    }
+}
+
+export function* changeEpisodeUserStatus(params: any): Iterator<any> {
+    try {
+        yield call(Api.changeEpisodeUserStatus, params.payload.userId, params.payload.episodeId, params.payload.isSeen, params.payload.rate);
+        yield put(SERIES_ACTIONS.changeUserEpisodesSeenSuccess());
+    } catch(error) {
+        yield put(SERIES_ACTIONS.changeUserEpisodesSeenFailure());
+    }
+}
+
 export function* seriesSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.FETCH_SERIES_REQUEST, fetchSeries);
     yield takeEvery(ActionTypes.FETCH_SEASONS_REQUEST, fetchSeasons);
     yield takeEvery(ActionTypes.FETCH_GENRES_REQUEST, fetchGenres);
     yield takeEvery(ActionTypes.FETCH_SERIES_PREF_REQUEST, fetchSeriesPref);
+    yield takeEvery(ActionTypes.FETCH_USER_EPISODES_SEEN_REQUEST, fetchEpisodeInfoUser);
+    yield takeEvery(ActionTypes.CHANGE_USER_EPISODES_SEEN_REQUEST, changeEpisodeUserStatus);
 }

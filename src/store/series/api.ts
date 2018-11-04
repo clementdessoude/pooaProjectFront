@@ -5,21 +5,17 @@ import { IGenre } from '../../interfaces';
 const fetchSeries = async () => {
 
     const url = BASE_API_URL + '/serie/all';
-    // tslint:disable:no-console
     const rep = await axios.get(url);
-    console.log('api fetch series', rep);
     return rep;
 }
 
 const fetchRecommandedSeries = async (genreScore: Array<{genre: IGenre, score: number}>) => {
 
     const url = BASE_API_URL + '/serie/preferences';
-    // tslint:disable:no-console
     const reqParam: {[x: string]: number} = {};
     genreScore.map(item => {
         reqParam[item.genre.id] = item.score;
     });
-    console.log('api fetch series preferences', reqParam);
     const rep = await axios.post(url, reqParam);
     return rep;
 }
@@ -27,41 +23,32 @@ const fetchRecommandedSeries = async (genreScore: Array<{genre: IGenre, score: n
 const fetchSeasons = async (serieId: string) => {
 
     const url = BASE_API_URL + `/season/serie-id/${serieId}`;
-    // tslint:disable:no-console
     const rep = await axios.get(url);
-    console.log('api fetch seasons', rep);
     return rep;
 }
 
 const fetchGenres = async () => {
 
     const url = BASE_API_URL + `/genre/all`;
-    // tslint:disable:no-console
     const rep = await axios.get(url);
-    console.log('api fetch genre', rep);
     return rep;
 }
 
-// const fetchEpisodes = async (seasonId: string) => {
+const fetchEpisodeInfoUser = async(userId: string, serieId: string) => {
+    const url = BASE_API_URL + `/episode/extrainformations`;
+    const rep = axios.post(url, {userId, serieId});
+    return rep;
+}
 
-//     const url = BASE_API_URL + `/episode/season-id/${seasonId}`;
-//     // tslint:disable:no-console
-//     const rep = await axios.get(url);
-//     console.log('api fetch episode for season id', seasonId, rep);
-//     return rep;
-// }
-
-
-// const addSerieToWatchList = async (serieId: string, userId: number) => {
-//     const url = BASE_API_URL + `/watchlist/userId/${userId}/serieId/${serieId}`;
-//     const rep = await axios.get(url);
-//     console.log('api watchlist add', rep);
-//     return rep;
-// }
+const changeEpisodeUserStatus = async(userId: string, episodeId: string, isSeen: boolean, rate: number) => {
+    const url = BASE_API_URL + `/episode/update`;
+    const rep = axios.post(url, {userId, episodeId, seen: isSeen, rate })
+    return rep;
+}
 
 export const Api = {
-    // addSerieToWatchList,
-    // fetchEpisodes,
+    changeEpisodeUserStatus,
+    fetchEpisodeInfoUser,
     fetchGenres,
     fetchRecommandedSeries,
     fetchSeasons,

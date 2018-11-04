@@ -20,16 +20,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Image } from '../../components'
 
+import { arrondiDecimal } from '../../utils';
 
 interface ISerieDetailsPageProps {
   displayRemove: boolean;
-  serie: ISerie,
-  seasons: ISeason[],
-  userId: string | null,
-  addSerieToWatchlist: (serieId: string, userId: string) => void,
-  fetchSeasons: (serieId: string) => void,
+  serie: ISerie;
+  seasons: ISeason[];
+  userId: string | null;
+  addSerieToWatchlist: (serieId: string, userId: string) => void;
+  changeUserEpisodesSeenRequest: (userId: string, episodeId: string, isSeen: boolean, rate: number) => void;
+  fetchUserEpisodesSeenRequest: (serieId: string, userId: string) => void;
+  fetchSeasons: (serieId: string) => void;
   fetchUserWatchlist: (userId: string) => void;
-  removeSerieOfWatchlist: (serieId: string, userId: string) => void,
+  removeSerieOfWatchlist: (serieId: string, userId: string) => void;
 }
 
 export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
@@ -38,6 +41,7 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
     this.props.fetchSeasons(this.props.serie.id);
     if (this.props.userId) {
       this.props.fetchUserWatchlist(this.props.userId);
+      this.props.fetchUserEpisodesSeenRequest(this.props.serie.id, this.props.userId);
     }
   }
 
@@ -51,9 +55,18 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
     }
   }
 
-  public onStarChange(value: number, episode: IEpisode) {
-    // tslint:disable-next-line:no-console
-    console.log("value changed for", value, episode);
+  public onStarChange(rate: number, episode: IEpisode) {
+    if (this.props.userId) {
+      this.props.changeUserEpisodesSeenRequest(this.props.userId, episode.id, episode.isSeen || false, rate);
+      this.props.fetchUserEpisodesSeenRequest(this.props.serie.id, this.props.userId);
+    }
+  }
+
+  public handleCheckBox(value: boolean, episode: IEpisode) {
+    if (this.props.userId) {
+      this.props.changeUserEpisodesSeenRequest(this.props.userId, episode.id, value, episode.rate || 0);
+      this.props.fetchUserEpisodesSeenRequest(this.props.serie.id, this.props.userId);
+    }
   }
 
   public render() {
@@ -79,16 +92,16 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
                   <List>
                     {(season.episodes || []).map((episode: IEpisode, index2) =>
                       // <div key={`${episode.name}-${index2}`}>{episode.name}</div>
-
+                        
                         <ListItem key={`${episode.name}-${index2}`}>
                           <div className="SerieDetailsPage-EpisodeImage">
                             <Image imgSrc={episode.imgSrc}/>
                           </div>
                           {episode.isSeen === undefined ? null :
                             <ListItemIcon>
-                                <Checkbox checked={episode.isSeen}/> 
+                                <Checkbox checked={episode.isSeen} onChange={(e, value) => this.handleCheckBox(value, episode)}/> 
                             </ListItemIcon>
-                          }
+                          } 
                           <div>
                               {/* <ListItemText primary={`${episode.episodeNumber}-${episode.name}`} /> */}
                               <span className="SerieDetailsPage-EpisodeTitle">{`${episode.episodeNumber}-${episode.name}`}</span>
@@ -101,7 +114,10 @@ export class SerieDetailsPage extends React.Component<ISerieDetailsPageProps> {
                                   checked={this.state.checked.indexOf('wifi') !== -1}
                                 />
                               </ListItemSecondaryAction> */}
-                            <StarRater value={1} onChange={(v) => this.onStarChange(v, episode)}/>
+                            <div>
+                              <StarRater value={episode.rate || 0} onChange={(v) => this.onStarChange(v, episode)}/>
+                              {episode.avgRate ? <span>Note moyenne des personnes ayant vu l'épisode: {arrondiDecimal(episode.avgRate)}</span> : null}
+                            </div>
                           </div>
                           </ListItem>
 

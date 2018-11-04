@@ -1,6 +1,6 @@
 import { Actions, ActionTypes } from './actions';
 
-import { ISeriesState } from '../../interfaces';
+import { IEpisode, ISeason, ISeriesState } from '../../interfaces';
 
 // export function serieReducer(state : IMissionState = {}, action: Actions) : IMissionState {
 export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeriesState {
@@ -40,6 +40,38 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         // SERIE Details
         case ActionTypes.SET_CURRENT_SERIE:
             return {...state, serieDetails: action.payload ? action.payload.serie : undefined };
+
+
+        
+        // FECTH USER WATCHLIST
+        case ActionTypes.FETCH_USER_EPISODES_SEEN_REQUEST:
+            return {...state, };
+        case ActionTypes.FETCH_USER_EPISODES_SEEN_FAILURE:
+            return {...state, };
+        case ActionTypes.FETCH_USER_EPISODES_SEEN_SUCCESS:
+            if (action.payload && state.seasonsSerieDetails) {
+                const episodesInfo = action.payload.episodesIdInfo || [];
+                const episodesId = Object.keys(episodesInfo);
+                // tslint:disable:no-console
+                console.log("reducer payload", episodesInfo, episodesId);
+                const seasonsSerieDetails = state.seasonsSerieDetails.map((season: ISeason) => {
+                    if (season.episodes) {
+                        const newSeason = {...season, episodes: season.episodes.map((episode: IEpisode) => {
+                            const isSeen = episodesInfo[episode.id].seen;
+                            const rate =  episodesInfo[episode.id].rate;
+                            const avgRate =  episodesInfo[episode.id].averageRate;
+                            return {...episode, isSeen, rate, avgRate};
+                        })}
+                        return newSeason;
+                    }
+                    return season;
+                })
+                // tslint:disable:no-console
+                console.log("reducer", seasonsSerieDetails);
+                return {...state, seasonsSerieDetails};
+            }
+            return {...state, };
+        
 
         default:
             return state;

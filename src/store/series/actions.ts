@@ -21,6 +21,14 @@ export enum ActionTypes {
     FETCH_SEASONS_FAILURE = 'FETCH_SEASONS_FAILURE',
 
     SET_CURRENT_SERIE = 'SET_CURRENT_SERIE',
+
+    FETCH_USER_EPISODES_SEEN_REQUEST = 'FETCH_USER_EPISODES_SEEN_REQUEST',
+    FETCH_USER_EPISODES_SEEN_SUCCESS = 'FETCH_USER_EPISODES_SEEN_SUCCESS',
+    FETCH_USER_EPISODES_SEEN_FAILURE = 'FETCH_USER_EPISODES_SEEN_FAILURE',
+
+    CHANGE_USER_EPISODES_SEEN_REQUEST = 'CHANGE_USER_EPISODES_SEEN_REQUEST',
+    CHANGE_USER_EPISODES_SEEN_SUCCESS = 'CHANGE_USER_EPISODES_SEEN_SUCCESS',
+    CHANGE_USER_EPISODES_SEEN_FAILURE = 'CHANGE_USER_EPISODES_SEEN_FAILURE',
 }
 
 export const SERIES_ACTIONS = {
@@ -42,6 +50,14 @@ export const SERIES_ACTIONS = {
     fetchSeasonsRequest: (payload: IFetchSeasonsRequestPayload) => createAction(ActionTypes.FETCH_SEASONS_REQUEST, payload),
 
     serieDetailsRequest: (payload: ISeriedetailsRequestPayload) => createAction(ActionTypes.SET_CURRENT_SERIE, payload),
+
+    fetchUserEpisodesSeenFailure: () => createAction(ActionTypes.FETCH_USER_EPISODES_SEEN_FAILURE),
+    fetchUserEpisodesSeenRequest: (payload: IFetchUserEpisodesSeenRequestPayload) => createAction(ActionTypes.FETCH_USER_EPISODES_SEEN_REQUEST, payload),
+    fetchUserEpisodesSeenSuccess: (payload: IFetchUserEpisodesSeenSuccessPayload) => createAction(ActionTypes.FETCH_USER_EPISODES_SEEN_SUCCESS, payload),
+
+    changeUserEpisodesSeenFailure: () => createAction(ActionTypes.CHANGE_USER_EPISODES_SEEN_FAILURE),
+    changeUserEpisodesSeenRequest: (payload: IChangeUserEpisodesSeenRequestPayload) => createAction(ActionTypes.CHANGE_USER_EPISODES_SEEN_REQUEST, payload),
+    changeUserEpisodesSeenSuccess: () => createAction(ActionTypes.CHANGE_USER_EPISODES_SEEN_SUCCESS),
 
 }
 
@@ -73,6 +89,24 @@ export interface IFetchSeriesPrefRequestPayload {
 export interface IFetchSeriesPrefSuccessPayload {
     recommandedSeries: ISerie[];
 }
+
+export interface IChangeUserEpisodesSeenRequestPayload {
+    userId: string;
+    episodeId: string;
+    isSeen: boolean;
+    rate: number;
+}
+
+
+export interface IFetchUserEpisodesSeenRequestPayload {
+    userId: string;
+    serieId: string;
+}
+
+export interface IFetchUserEpisodesSeenSuccessPayload {
+    episodesIdInfo: {[id: number]: {averageRate: number, rate: number, seen: boolean}};
+}
+
 
 export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof A]>;
 export type Actions = ActionsUnion<typeof SERIES_ACTIONS>;
