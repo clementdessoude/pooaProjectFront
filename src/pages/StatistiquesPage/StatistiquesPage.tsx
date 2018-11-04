@@ -67,7 +67,7 @@ export class StatistiquesPage extends React.Component<IStatistiquesPageProps> {
                 <span>{this.props.episodeSeenCount} Episode(s) vu(s)</span>
             </div>
             <div>
-                <span>{this.props.serieInWatchlistCount} Episode(s) dans la liste</span>
+                <span>{this.props.serieInWatchlistCount} Série(s) dans la liste</span>
             </div>
             <div>
                 <span>{this.props.totalWatchingTime} minutes de série regardées</span>
