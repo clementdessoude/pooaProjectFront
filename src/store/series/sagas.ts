@@ -12,7 +12,7 @@ import { BASE_IMG_URL, BASE_IMG_URL_EPISODE, IMG_URL_EMPTY } from '../../const/a
 export function* fetchSeries(): Iterator<any> {
     try {
         const rep = yield call(Api.fetchSeries, null);
-        let data = rep.data;
+        let data = rep.data.content;
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
             description: item.description as string,
@@ -24,6 +24,26 @@ export function* fetchSeries(): Iterator<any> {
         yield put(SERIES_ACTIONS.fecthSeriesSuccess({series: data}));
     } catch (error) {
         yield put(SERIES_ACTIONS.fecthSeriesFailure());
+    }
+}
+
+export function* fetchSeriesByName(params: any): Iterator<any> {
+    try {
+        const rep = yield call(Api.fetchSeriesByName, params.payload.name);
+        let data = rep.data;
+        // tslint:disable-next-line:no-console
+        console.log(data);
+        // // add missing value from api
+        data = data.map((item: any): ISerie => ({
+            description: item.description as string,
+            genres: item.genres.map((g: any) => ({...g, id: g.id.toString()})),
+            id: item.id,
+            imgSrc: BASE_IMG_URL + item.image as string,
+            title: item.name as string,
+        }));
+        yield put(SERIES_ACTIONS.fecthSeriesNameSuccess({series: data}));
+    } catch (error) {
+        yield put(SERIES_ACTIONS.fecthSeriesNameFailure());
     }
 }
 
@@ -109,4 +129,5 @@ export function* seriesSaga(): Iterator<any> {
     yield takeEvery(ActionTypes.FETCH_SERIES_PREF_REQUEST, fetchSeriesPref);
     yield takeEvery(ActionTypes.FETCH_USER_EPISODES_SEEN_REQUEST, fetchEpisodeInfoUser);
     yield takeEvery(ActionTypes.CHANGE_USER_EPISODES_SEEN_REQUEST, changeEpisodeUserStatus);
+    yield takeEvery(ActionTypes.FETCH_SERIES_NAME_REQUEST, fetchSeriesByName);
 }

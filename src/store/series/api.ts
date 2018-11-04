@@ -5,7 +5,13 @@ import { IGenre } from '../../interfaces';
 const fetchSeries = async () => {
 
     const url = BASE_API_URL + '/serie/all';
-    const rep = await axios.get(url);
+    const rep = await axios.get(url, {params: {size:20, page:1}});
+    return rep;
+}
+
+const fetchSeriesByName = async (name: string) => {
+    const url = BASE_API_URL + `/serie/name`;
+    const rep = await axios.get(url, {params: {name}});
     return rep;
 }
 
@@ -53,4 +59,5 @@ export const Api = {
     fetchRecommandedSeries,
     fetchSeasons,
     fetchSeries,
+    fetchSeriesByName,
 };

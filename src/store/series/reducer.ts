@@ -13,6 +13,15 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_SERIES_FAILURE:
             return {...state, };
 
+
+        // SERIES fetch
+        case ActionTypes.FETCH_SERIES_NAME_REQUEST:
+            return {...state, };
+        case ActionTypes.FETCH_SERIES_NAME_SUCCESS:
+            return {...state, series: action.payload ? action.payload.series : []};
+        case ActionTypes.FETCH_SERIES_NAME_FAILURE:
+            return {...state, };
+
         // SEASONS fetch
         case ActionTypes.FETCH_SEASONS_REQUEST:
             return {...state, };
@@ -43,7 +52,7 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
 
 
         
-        // FECTH USER WATCHLIST
+        // FETCH Extra info
         case ActionTypes.FETCH_USER_EPISODES_SEEN_REQUEST:
             return {...state, };
         case ActionTypes.FETCH_USER_EPISODES_SEEN_FAILURE:

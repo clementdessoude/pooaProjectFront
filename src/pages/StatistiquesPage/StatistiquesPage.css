@@ -1,0 +1,15 @@
+.StatistiquesPage {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.StatistiquesPage-Top {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+
+}
+
+.StatistiquesPage-Top div {
+    padding: 0 1rem;
+}

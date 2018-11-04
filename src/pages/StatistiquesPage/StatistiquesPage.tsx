@@ -62,17 +62,21 @@ export class StatistiquesPage extends React.Component<IStatistiquesPageProps> {
 
     return (
       <div className="StatistiquesPage">
-          <span>Statistiques</span>
-          <div>
-            <span>episodeSeenCount: {this.props.episodeSeenCount}</span>
+          <div className="StatistiquesPage-Top">
+            <div>
+                <span>{this.props.episodeSeenCount} Episode(s) vu(s)</span>
+            </div>
+            <div>
+                <span>{this.props.serieInWatchlistCount} Episode(s) dans la liste</span>
+            </div>
+            <div>
+                <span>{this.props.totalWatchingTime} minutes de série regardées</span>
+            </div>
           </div>
           <div>
-            <span>serieInWatchlistCount: {this.props.serieInWatchlistCount}</span>
-          </div>
-          <div>
-            <span>totalWatchingTime: {this.props.totalWatchingTime}</span>
-          </div>
-          <div>
+            <div>
+                <span>Series vue par Genre</span>
+            </div>
             {/* <span>serieByGenreCount: {this.props.serieByGenreCount}</span> */}
             <DoughnutChart data={chartData} />
           </div>

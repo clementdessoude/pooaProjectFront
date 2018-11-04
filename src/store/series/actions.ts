@@ -8,6 +8,10 @@ export enum ActionTypes {
     FETCH_SERIES_SUCCESS = 'FETCH_SERIES_SUCCESS',
     FETCH_SERIES_FAILURE = 'FETCH_SERIES_FAILURE',
 
+    FETCH_SERIES_NAME_REQUEST = 'FETCH_SERIES_NAME_REQUEST',
+    FETCH_SERIES_NAME_SUCCESS = 'FETCH_SERIES_NAME_SUCCESS',
+    FETCH_SERIES_NAME_FAILURE = 'FETCH_SERIES_NAME_FAILURE',
+
     FETCH_SERIES_PREF_REQUEST = 'FETCH_SERIES_PREF_REQUEST',
     FETCH_SERIES_PREF_SUCCESS = 'FETCH_SERIES_PREF_SUCCESS',
     FETCH_SERIES_PREF_FAILURE = 'FETCH_SERIES_PREF_FAILURE',
@@ -35,6 +39,10 @@ export const SERIES_ACTIONS = {
     fecthSeriesFailure: () => createAction(ActionTypes.FETCH_SERIES_FAILURE),
     fecthSeriesSuccess: (payload: IFetchSeriesSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_SUCCESS, payload),
     fetchSeriesRequest: () => createAction(ActionTypes.FETCH_SERIES_REQUEST),
+
+    fecthSeriesNameFailure: () => createAction(ActionTypes.FETCH_SERIES_NAME_FAILURE),
+    fecthSeriesNameSuccess: (payload: IFetchSeriesNameSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_NAME_SUCCESS, payload),
+    fetchSeriesNameRequest: (payload: IFetchSeriesNameRequestPayload) => createAction(ActionTypes.FETCH_SERIES_NAME_REQUEST, payload),
 
     fecthSeriesPrefFailure: () => createAction(ActionTypes.FETCH_SERIES_PREF_FAILURE),
     fecthSeriesPrefSuccess: (payload: IFetchSeriesPrefSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_PREF_SUCCESS, payload),
@@ -105,6 +113,14 @@ export interface IFetchUserEpisodesSeenRequestPayload {
 
 export interface IFetchUserEpisodesSeenSuccessPayload {
     episodesIdInfo: {[id: number]: {averageRate: number, rate: number, seen: boolean}};
+}
+
+export interface IFetchSeriesNameRequestPayload {
+    name: string;
+}
+
+export interface IFetchSeriesNameSuccessPayload {
+    series: ISerie[];
 }
 
 
