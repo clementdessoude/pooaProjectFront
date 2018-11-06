@@ -28,7 +28,7 @@ const fetchRecommandedSeries = async (genreScore: Array<{genre: IGenre, score: n
 
 const fetchSeasons = async (serieId: string) => {
 
-    const url = BASE_API_URL + `/season/serie-id/${serieId}`;
+    const url = BASE_API_URL + `/season/serieId/${serieId}`;
     const rep = await axios.get(url);
     return rep;
 }
