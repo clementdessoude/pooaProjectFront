@@ -9,9 +9,9 @@ import { Api } from './api';
 import { BASE_IMG_URL, BASE_IMG_URL_EPISODE, IMG_URL_EMPTY } from '../../const/api.const';
 
 
-export function* fetchSeries(): Iterator<any> {
+export function* fetchSeries(params: any): Iterator<any> {
     try {
-        const rep = yield call(Api.fetchSeries, null);
+        const rep = yield call(Api.fetchSeries, params.payload.pageNumber, params.payload.seriesPerPage);
         let data = rep.data.content;
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
@@ -31,8 +31,6 @@ export function* fetchSeriesByName(params: any): Iterator<any> {
     try {
         const rep = yield call(Api.fetchSeriesByName, params.payload.name);
         let data = rep.data;
-        // tslint:disable-next-line:no-console
-        console.log(data);
         // // add missing value from api
         data = data.map((item: any): ISerie => ({
             description: item.description as string,

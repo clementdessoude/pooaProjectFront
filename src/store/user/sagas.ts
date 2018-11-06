@@ -18,9 +18,7 @@ export function* loginRequest(params: any): Iterator<any> {
 
 export function* registerRequest(params: any): Iterator<any> {
     try {
-        const rep = yield call(Api.registerRequest, params.payload.login, params.payload.password, params.payload.birthdate);
-        // tslint:disable-next-line:no-console
-        console.log(rep);
+        yield call(Api.registerRequest, params.payload.login, params.payload.password, params.payload.birthdate);
         yield put(USER_ACTIONS.registerSuccess());
     } catch (error) {
         yield put(USER_ACTIONS.registerFailure());

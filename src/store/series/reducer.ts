@@ -60,9 +60,7 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
         case ActionTypes.FETCH_USER_EPISODES_SEEN_SUCCESS:
             if (action.payload && state.seasonsSerieDetails) {
                 const episodesInfo = action.payload.episodesIdInfo || [];
-                const episodesId = Object.keys(episodesInfo);
-                // tslint:disable:no-console
-                console.log("reducer payload", episodesInfo, episodesId);
+                // const episodesId = Object.keys(episodesInfo);
                 const seasonsSerieDetails = state.seasonsSerieDetails.map((season: ISeason) => {
                     if (season.episodes) {
                         const newSeason = {...season, episodes: season.episodes.map((episode: IEpisode) => {
@@ -75,8 +73,6 @@ export function serieReducer(state : ISeriesState  = {}, action: Actions): ISeri
                     }
                     return season;
                 })
-                // tslint:disable:no-console
-                console.log("reducer", seasonsSerieDetails);
                 return {...state, seasonsSerieDetails};
             }
             return {...state, };

@@ -14,7 +14,6 @@ interface IMultipleSliderProps {
 interface IMultipleSliderState {
     genreScore: Array<{genre: IGenre, score: number}>;
 }
-      // tslint:disable:no-console
 
 export class MultipleSlider extends React.Component<IMultipleSliderProps, IMultipleSliderState> {
 

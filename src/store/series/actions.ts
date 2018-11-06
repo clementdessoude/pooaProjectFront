@@ -38,7 +38,7 @@ export enum ActionTypes {
 export const SERIES_ACTIONS = {
     fecthSeriesFailure: () => createAction(ActionTypes.FETCH_SERIES_FAILURE),
     fecthSeriesSuccess: (payload: IFetchSeriesSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_SUCCESS, payload),
-    fetchSeriesRequest: () => createAction(ActionTypes.FETCH_SERIES_REQUEST),
+    fetchSeriesRequest: (payload: IFetchSeriesRequestPayload) => createAction(ActionTypes.FETCH_SERIES_REQUEST, payload),
 
     fecthSeriesNameFailure: () => createAction(ActionTypes.FETCH_SERIES_NAME_FAILURE),
     fecthSeriesNameSuccess: (payload: IFetchSeriesNameSuccessPayload) => createAction(ActionTypes.FETCH_SERIES_NAME_SUCCESS, payload),
@@ -71,6 +71,11 @@ export const SERIES_ACTIONS = {
 
 export interface IFetchSeriesSuccessPayload {
     series: ISerie[];
+}
+
+export interface IFetchSeriesRequestPayload {
+    pageNumber: number;
+    seriesPerPage: number;
 }
 
 export interface ISeriedetailsRequestPayload {

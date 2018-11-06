@@ -27,7 +27,6 @@ interface IRecommandationPageProps {
   setCurrentSerieDetail: (serie: ISerie) => void;
   userId: string | null;
 }
-// tslint:disable:no-console
 
 export class RecommandationPage extends React.Component<IRecommandationPageProps,IRecommandationPageState> {
 
@@ -59,7 +58,6 @@ export class RecommandationPage extends React.Component<IRecommandationPageProps
     }
 
     public onMultipleSliderChange(genreScore: any) {
-        // console.log(genreScore);
         clearTimeout(this.state.timeout);
         const timeout = setTimeout(() => {
             this.props.fetchRecommandedSeries(genreScore);

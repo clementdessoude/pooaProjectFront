@@ -19,7 +19,7 @@ const mapStateToProps = (state: IStore) => {
 
 const mapDispatchToProps = (dispatch: any) => ({
     addSerieToWatchlist: (serieId: string, userId: string) => dispatch(WATCHLIST_ACTIONS.addSerieToWatchlistRequest({serieId, userId})),
-    fetchSeries: () => dispatch(SERIES_ACTIONS.fetchSeriesRequest()),
+    fetchSeries: (pageNumber: number, seriesPerPage: number) => dispatch(SERIES_ACTIONS.fetchSeriesRequest({pageNumber, seriesPerPage})),
     fetchSeriesName: (name: string) => dispatch(SERIES_ACTIONS.fetchSeriesNameRequest({name})),
     fetchUserWatchlist: (userId: string) => dispatch(WATCHLIST_ACTIONS.fetchUserWatchlistRequest({userId})),
     goToSerieDetails: () => dispatch(push('/serie-details')),

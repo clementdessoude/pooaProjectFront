@@ -2,10 +2,10 @@ import axios from 'axios';
 import { BASE_API_URL } from '../../const/api.const';
 import { IGenre } from '../../interfaces';
 
-const fetchSeries = async () => {
+const fetchSeries = async (pageNumber: number, seriesPerPage: number) => {
 
     const url = BASE_API_URL + '/serie/all';
-    const rep = await axios.get(url, {params: {size:20, page:1}});
+    const rep = await axios.get(url, {params: {size: seriesPerPage, page: pageNumber}});
     return rep;
 }
 
